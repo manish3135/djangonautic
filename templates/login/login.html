@@ -1,0 +1,23 @@
+{% extends 'base_layout.html'%}
+{% block body_block %}
+<h4><a href="{% url 'homepage' %}" class="text-info">Back to Homepage</a></h4>
+<div class="jumbotron" style="background-color:#ccddff; background-size:100%">
+  <h1 style="color:#8080ff"> Login here </h1>
+  <form action="{% url 'login:user_login' %}"  method="post">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="Enter Username">
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" placeholder="Enter Password">
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+
+</div>
+<ul>
+  <li>You must have to register first to login!</li>
+  <li>Enter the same username and password used while registration</li>
+</ul>
+
+{% endblock %}

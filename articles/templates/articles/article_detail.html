@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<style media="screen">
+h2 {
+  text-align: center;
+  color: grey;
+}
+p {
+   color: black;
+  text-align: left;
+  font-style: italic;
+}
+img {
+  max-width: 100%;
+   height: auto;
+}
+</style>
+  <div class="container">
+    <h1><a href="{% url 'articles:list' %}" class="text-info">Back to Article section</a></h1>
+      <h2 class="text-uppercase">{{ article.title }}</h2>
+      <p>{{ article.date }}</p>
+      <div class="article">
+         <img src="{{ article.thumb.url }}" >
+         <div class="jumbotron">
+           <h3 style="background-color:white; background-size:100%;">{{ article.body }}</h3>
+         </div>
+      </div>
+  </div>
+
+  {% endblock %}

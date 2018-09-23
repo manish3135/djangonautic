@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+{% block body_block %}
+<div class="container">
+  <h1 class="bg-primary text-white">ARTICLES</h1>
+  <h4 >
+    {% if user.is_authenticated %}
+    <a href="{% url 'articles:Create' %}">Create An Article</a>
+    {% else %}
+    <h2> Login or Register yourself to create an article</h2>
+    {% endif %}
+  </h4>
+  <div class= "articles">
+    {% for article in articles %}
+      <div class= "jumbotron"style="background-image: url(http://travelingwithmemyselfandi.com/wp-content/uploads/2014/03/slide2.jpg); background-repeat=repeat-x;">
+        <h2 class="text-uppercase"><a href="{% url 'articles:detail' slug=article.slug %}">{{article.title}}</a><h2>
+          <p style="border:3px;border-style:solid;border-color:red; padding:1em;">{{article.snippet}}</p>
+          <p class="font-weight-light">{{article.date}}</p>
+          <p class="font-italic">written by: {{article.author}}</p>
+
+      </div>
+  </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <style>
+    body {
+      background-image: url("https://thumbs.dreamstime.com/z/vintage-grunge-newspaper-collage-texture-background-old-grunge-newspaper-collage-paper-texture-seamless-pattern-background-blurred-113632092.jpg");
+    }
+  </style>
+  <body>
+    <nav class= "navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class= "container" >
+        <ul class = "nav navbar-nav">
+          <li><a class="navbar-link" href=" {% url 'admin:index' %}"> Admin </a> </li>
+          <li><a class="navbar-link" href="{% url 'accounts:register' %}"> Register </a> </li>
+          <li><a class="navbar-link" href="{% url 'about' %}"> Contact Us </a> </li>
+
+
+          {% if user.is_authenticated %}
+          <li><a class="navbar-link"  href="{% url 'accounts:logout' %}">Logout</a></li>
+          {% else %}
+          <li><a class="navbar-link"  href="{% url 'accounts:user_login' %}">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <div class= "container">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+
+  </body>
+</html>

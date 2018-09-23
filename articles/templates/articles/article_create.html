@@ -1,0 +1,22 @@
+{% extends 'base_layout.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<style media="screen">
+  h2 {
+    color: red
+  }
+  site-form {
+    border-style: solid;
+  }
+</style>
+<h1><a href="{% url 'articles:list' %}" class="text-info">Jump to Article section</a></h1>
+ <div class="jumbotron" style="background-image: url(https://wallpapertag.com/wallpaper/full/e/4/5/142705-background-images-with-quotes-3264x2040-for-4k-monitor.jpg); background-repeat: no-repeat;height:auto;">
+   <h2>Create an Awesome Article </h2>
+   <form class="site-form" action="{% url 'articles:Create'%}" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+     {{ form.as_p }}
+     <button type="submit" class="btn btn-primary">Submit</button>
+   </form>
+ </div>
+
+{% endblock %}
